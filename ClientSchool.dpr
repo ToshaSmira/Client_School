@@ -2,7 +2,9 @@ program ClientSchool;
 
 uses
   Vcl.Forms,
-  uMain in 'uMain.pas' {Form1};
+  uMain in 'uMain.pas' {Form1},
+  uSchoolData in 'uSchoolData.pas' {SchoolData: TDataModule},
+  SchoolLibrary_Intf in '..\School\SchoolLibrary_Intf.pas';
 
 {$R *.res}
 
