@@ -42,9 +42,35 @@ object Form1: TForm1
     Height = 13
     Caption = 'lbnServer'
   end
+  object mmInfo: TcxMemo
+    Left = 16
+    Top = 120
+    Lines.Strings = (
+      'mmInfo')
+    TabOrder = 0
+    Visible = False
+    Height = 201
+    Width = 257
+  end
+  object btnPupils: TcxButton
+    Left = 16
+    Top = 72
+    Width = 75
+    Height = 25
+    Action = ShowAllPupils
+    TabOrder = 1
+  end
   object tmServerTime: TTimer
     OnTimer = tmServerTimeTimer
     Left = 168
     Top = 16
+  end
+  object aAction: TActionList
+    Left = 264
+    Top = 32
+    object ShowAllPupils: TAction
+      Caption = 'Pupils'
+      OnExecute = ShowAllPupilsExecute
+    end
   end
 end

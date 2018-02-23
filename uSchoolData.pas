@@ -6,18 +6,10 @@ uses
   System.SysUtils, System.Classes, uROBaseConnection, uROTransportChannel, uROIndyTCPChannel, uROMessage, uROBinMessage,
   uROComponent, uROChannelAwareComponent, uRORemoteService, SchoolLibrary_Intf, uROBaseHTTPClient, uROIndyHTTPChannel;
 
-
-//    System.SysUtils, System.Classes, Vcl.Dialogs,
-//  IdStack,
-//  uROMessage, uROBinMessage, uROBaseConnection,
-//  uROTransportChannel, uROBaseHTTPClient, uROIndyHTTPChannel, uROComponent,
-//  uROChannelAwareComponent, uRORemoteService, uROIndyTCPChannel,
-//  uROAESEncryptionEnvelope,
-//  uVCloudClientSettings,
-//  VCloudServiceLibrary_Intf;
-//
-
 type
+  TPupil = roPupil;
+  TPupilsList = roPupilsView;
+
   TSchoolData = class(TDataModule)
     SchoolService: TRORemoteService;
     SchoolMessage: TROBinMessage;
@@ -29,6 +21,7 @@ type
     { Public declarations }
     function GetNameServer: string;
     function GetDateTimeServer: TDateTime;
+    function PupilsList: TPupilsList;
   end;
 
   function VSchoolData: TSchoolData;
@@ -74,6 +67,15 @@ end;
 function TSchoolData.Get_ISchoolService: ISchoolService;
 begin
   Result := SchoolService as ISchoolService;
+end;
+
+function TSchoolData.PupilsList: TPupilsList;
+begin
+  try
+    Get_ISchoolService.GetPupilsList(Result);
+  except
+    Result := nil;
+  end;
 end;
 
 initialization
